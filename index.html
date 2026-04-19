@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Map a lifespan into weeks and see elapsed time as a quiet grid of squares.">
+    <title>How Many Weeks</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Week calculator">
+        <aside class="side-panel" aria-label="Life context">
+          <section class="entry-screen" aria-label="Inputs">
+            <div class="brand">
+              <p>How Many Weeks</p>
+              <h1>Your time, made visible.</h1>
+            </div>
+
+            <form class="controls" id="week-form">
+              <label class="field">
+                <span>Date of birth</span>
+                <input id="dob" name="dob" type="date" required>
+                <small>Nothing is stored or sent. Calculations happen in real time in your browser.</small>
+              </label>
+
+              <label class="field">
+                <span>Years to map</span>
+                <input id="years" name="years" type="number" min="1" max="150" step="1" placeholder="e.g. 90" required>
+              </label>
+            </form>
+
+            <p class="error" id="error" role="alert" aria-live="polite"></p>
+          </section>
+
+          <section class="results-screen" id="results-screen" aria-label="Calculated life context" hidden>
+            <section class="insights">
+              <div class="insight-primary">
+                <span>Age today</span>
+                <strong id="age-value">--</strong>
+              </div>
+
+              <dl class="facts">
+                <div>
+                  <dt>Weeks lived</dt>
+                  <dd id="weeks-lived">--</dd>
+                </div>
+                <div>
+                  <dt>Mapped until</dt>
+                  <dd id="mapped-until">--</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="quote-box" aria-label="Time quote">
+              <p id="quote-text"></p>
+            </section>
+
+            <section class="easter-egg" id="easter-egg" aria-label="A note for younger visitors" hidden>
+              <p>Aren't you too young to be worried about your time? Go have some fun. This page is mostly for people who need a reminder to turn the light back on.</p>
+            </section>
+
+            <section class="optimism-note" id="optimism-note" aria-label="A note for long timelines" hidden>
+              <p>Being optimistic, eh? Build the kind of days that would make a hundred years feel well used.</p>
+            </section>
+
+            <section class="milestones" aria-label="General life milestones">
+              <div class="section-heading">
+                <h2>Common markers</h2>
+                <p>Social timing varies. Treat these as context, not instructions.</p>
+              </div>
+              <ul id="milestone-list"></ul>
+            </section>
+          </section>
+        </aside>
+
+        <section class="timeline" aria-label="Generated week grid">
+          <div class="timeline-header">
+            <div>
+              <h2 id="grid-title">Your weeks</h2>
+              <p id="grid-range">Choose a date to begin.</p>
+            </div>
+            <div class="header-actions">
+              <div class="legend" aria-label="Grid legend">
+                <span><i class="sample sample-filled"></i>Elapsed</span>
+                <span><i class="sample"></i>Future</span>
+              </div>
+              <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+                <span class="toggle-track" aria-hidden="true">
+                  <span class="toggle-thumb"></span>
+                </span>
+                <span class="toggle-icon" aria-hidden="true">☾</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="grid-wrap">
+            <div class="week-grid" id="week-grid" role="img" aria-label="No week grid generated yet"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
